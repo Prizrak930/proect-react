@@ -27,13 +27,13 @@ jobs:
       - name: Run build task
         run: npm run build --if-present
           
-      - name: Install pm2
+      - name: Install PM2
         run: npm install pm2 -g
 
       - name: Start React app with PM2
         run: pm2 start npm --name "restaurant-react" -- start -- --port 8080
         env:
-          PM2_PUBLIC: true
+          PM2_PUBLIC: true # Дозволяємо PM2 служити додаток на відкритому порті
           
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
